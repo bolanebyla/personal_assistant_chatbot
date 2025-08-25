@@ -2,7 +2,7 @@ from aiogram import Router, html
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-from personal_assistant.infrastructure.tg_chat_bot.keyboards.main_menu import (
+from personal_assistant.infrastructure.tg_bot.keyboards.main_menu import (
     create_main_menu_keyboard,
 )
 

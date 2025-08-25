@@ -1,6 +1,6 @@
 from aiogram import Dispatcher
 
-from personal_assistant.infrastructure.tg_chat_bot.handlers import (
+from personal_assistant.infrastructure.tg_bot.handlers import (
     default_router,
     food_ration_router,
     start_router,

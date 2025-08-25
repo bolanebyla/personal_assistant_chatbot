@@ -2,7 +2,7 @@ import asyncio
 import logging
 import sys
 
-from personal_assistant.infrastructure.tg_chat_bot import (
+from personal_assistant.infrastructure.tg_bot import (
     tg_bot,
     tg_bot_dispatcher,
 )
