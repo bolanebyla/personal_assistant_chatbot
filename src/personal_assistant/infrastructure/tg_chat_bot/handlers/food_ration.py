@@ -1,11 +1,13 @@
 from aiogram import F, Router
 from aiogram.types import Message
 
-food_ration_router = Router(name="food_ration")
+from personal_assistant.infrastructure.tg_chat_bot.keyboards.main_menu import (
+    TODAY_FOOD_RATION_MESSAGE_TEXT,
+)
 
-TODAY_FOOD_RATION_MESSAGE_TEXT = "Меню на день"
+food_ration_router = Router(name="food_ration")
 
 
 @food_ration_router.message(F.text == TODAY_FOOD_RATION_MESSAGE_TEXT)
 async def echo_handler(message: Message) -> None:
-    await message.answer("Маню на день ещё не сформировано 🙈")
+    await message.answer("Рацион на день ещё не сформирован 🙈")
