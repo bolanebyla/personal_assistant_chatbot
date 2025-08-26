@@ -3,6 +3,7 @@ docker-compose/db-data/
 docker-compose/minio/
 docker-compose/grafana-data/
 tmp/
+.cursor/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
