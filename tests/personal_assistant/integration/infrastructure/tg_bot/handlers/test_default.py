@@ -11,7 +11,7 @@ from personal_assistant.infrastructure.tg_bot.handlers.default import (
 
 
 @pytest.mark.asyncio
-async def test_default_handler(mocker: MockerFixture):
+async def test_default_handler(mocker: MockerFixture) -> None:
     mock_answer = mocker.AsyncMock()
     mocker.patch.object(Message, "answer", mock_answer)
 

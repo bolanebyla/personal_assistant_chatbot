@@ -8,7 +8,7 @@ from personal_assistant.infrastructure.tg_bot import (
 )
 
 
-async def start_tg_bot_polling():
+async def start_tg_bot_polling() -> None:
     await tg_bot_dispatcher.start_polling(tg_bot)
 
 

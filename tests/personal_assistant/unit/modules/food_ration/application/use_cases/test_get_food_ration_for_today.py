@@ -10,7 +10,7 @@ from personal_assistant.modules.food_ration.application.use_cases import (
 
 
 @pytest.fixture(scope="function")
-def use_case():
+def use_case() -> GetFoodRationForTodayUseCase:
     return GetFoodRationForTodayUseCase()
 
 

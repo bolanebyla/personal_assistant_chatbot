@@ -13,8 +13,13 @@ start_router = Router(name="start")
 async def command_start_handler(message: Message) -> None:
     main_menu_keyboard = create_main_menu_keyboard()
 
+    if message.from_user is not None:
+        first_name_text = f", {html.bold(message.from_user.first_name)}"
+    else:
+        first_name_text = ""
+
     await message.answer(
-        f"Привет, {html.bold(message.from_user.first_name)}!\n"
+        f"Привет{first_name_text}!\n"
         f"Я твой личный бот помощник 😁 Надеюсь на продуктивную работу 😉\n\n"
         f"Все мои функции доступны через меню ⌨️ \n\n"
         f"Если меню пропало, то его можно развернуть, "
