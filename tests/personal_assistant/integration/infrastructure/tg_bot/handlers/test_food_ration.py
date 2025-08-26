@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import pytest
-from aiogram.types import Chat, Message, User
+from aiogram.types import Chat, Message
 from pytest_mock import MockerFixture
 
 from personal_assistant.infrastructure.tg_bot.handlers.food_ration import (

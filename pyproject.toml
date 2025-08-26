@@ -25,30 +25,44 @@ dev = [
 [tool.mypy]
 python_version = "3.13"
 plugins = ["pydantic.mypy"]
-disallow_any_generics = true
-disallow_subclassing_any = false
-disallow_untyped_calls = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-no_implicit_optional = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_return_any = true
-strict_equality = true
-disallow_untyped_decorators = false
-ignore_missing_imports = true
+strict = true
+warn_unused_configs = true
+ignore_missing_imports = false
 implicit_reexport = true
+exclude = "(^|/)(.venv|env|build|dist|migrations|alembic)/"
+mypy_path = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_untyped_calls = false
+warn_return_any = false
+disallow_untyped_decorators = false
+
+[[tool.mypy.overrides]]
+module = [
+  "pytest",
+  "pytest.*",
+  "pytest_mock",
+  "pytest_mock.*",
+  "freezegun",
+  "freezegun.*",
+]
+ignore_missing_imports = true
 
 [tool.ruff]
 src = ["src"]
-line-length = 80
+line-length = 100
 
 [tool.ruff.lint]
-select = [
-    # isort
-    "I001"
-]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+"tests/**/*" = ["S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
