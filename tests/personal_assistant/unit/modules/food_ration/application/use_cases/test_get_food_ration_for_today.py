@@ -15,7 +15,7 @@ def use_case() -> GetFoodRationForTodayUseCase:
 
 
 @freeze_time("2025-08-24")  # sunday
-def test_get_food_ration_for_today(
+def test__get_food_ration_for_today(
     use_case: GetFoodRationForTodayUseCase,
 ) -> None:
     result = use_case.execute()

@@ -5,7 +5,7 @@ from personal_assistant.infrastructure.tg_bot.keyboards.main_menu import (
 )
 
 
-def test_create_main_menu_keyboard() -> None:
+def test__create_main_menu_keyboard() -> None:
     main_menu_keyboard = create_main_menu_keyboard()
 
     assert isinstance(main_menu_keyboard, ReplyKeyboardMarkup)

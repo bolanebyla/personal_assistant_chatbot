@@ -13,7 +13,7 @@ from personal_assistant.modules.food_ration.application.use_cases import (
 
 
 @pytest.mark.asyncio
-async def test_today_food_ration_handler__formated_food_ration(
+async def test__today_food_ration_handler__formated_food_ration(
     mocker: MockerFixture,
 ) -> None:
     mock_answer = mocker.AsyncMock()
@@ -38,7 +38,7 @@ async def test_today_food_ration_handler__formated_food_ration(
 
 
 @pytest.mark.asyncio
-async def test_today_food_ration_handler__empty(mocker: MockerFixture) -> None:
+async def test__today_food_ration_handler__empty(mocker: MockerFixture) -> None:
     mock_answer = mocker.AsyncMock()
     mocker.patch.object(Message, "answer", mock_answer)
 

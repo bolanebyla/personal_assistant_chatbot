@@ -1,12 +1,12 @@
 from calendar import Day
 from dataclasses import dataclass
-from uuid import UUID
+
+from commons.entities import BaseEntity
 
 
 @dataclass(kw_only=True)
-class FoodRationDay:
+class FoodRationDay(BaseEntity):
     """День рациона питания"""
 
-    id: UUID
     week_day: Day
     weeks_interval: int
