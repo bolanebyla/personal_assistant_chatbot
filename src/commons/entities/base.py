@@ -45,6 +45,9 @@ def create_entity_id() -> EntityId:
     return uuid.uuid4()
 
 
+# TODO: добавить события сущностей
+
+
 @dataclass
 class BaseEntity:
     """
