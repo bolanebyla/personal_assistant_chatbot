@@ -1,9 +1,9 @@
-import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Protocol, runtime_checkable
 
 from commons.datetime_utils import now_tz
+from commons.events import BaseDomainEvent
 
 
 @runtime_checkable
@@ -38,16 +38,6 @@ class EntityIdFactory(Protocol):
     def __call__(self) -> EntityId: ...
 
 
-def create_entity_id() -> EntityId:
-    """
-    Создаёт идентификатор сущности
-    """
-    return uuid.uuid4()
-
-
-# TODO: добавить события сущностей
-
-
 @dataclass
 class BaseEntity:
     """
@@ -57,6 +47,17 @@ class BaseEntity:
     id: EntityId
     created_at: datetime
     updated_at: datetime
+
+    __domain_events: list[BaseDomainEvent] = field(default_factory=list)
+
+    def _add_domain_event(self, event: BaseDomainEvent) -> None:
+        """Добавляет доменное событие в список событий сущности"""
+        self.__domain_events.append(event)
+
+    @property
+    def domain_events(self) -> list[BaseDomainEvent]:
+        """Возвращает список всех доменных событий сущности"""
+        return self.__domain_events.copy()
 
     def set_updated_at(self) -> None:
         """

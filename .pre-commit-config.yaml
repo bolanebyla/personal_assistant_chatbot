@@ -17,10 +17,8 @@ repos:
     rev: v1.16.1
     hooks:
       - id: mypy
-#        pass_filenames: false
         args: [--config-file=pyproject.toml]
         additional_dependencies:
           - aiogram==3.22.0
           - pydantic==2.11.7
           - pydantic-settings==2.10.1
-#        additional_dependencies: [types-all]

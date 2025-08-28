@@ -3,9 +3,10 @@ from datetime import datetime
 
 import pytest
 
-from personal_assistant.modules.food_ration.domain.entities.food_ration import FoodRation
-from personal_assistant.modules.food_ration.domain.entities.food_ration_day import FoodRationDay
-from personal_assistant.modules.food_ration.domain.errors import (
+from personal_assistant.modules.food_ration.domain import (
+    FoodRation,
+    FoodRationCreatedEvent,
+    FoodRationDay,
     FoodRationDayAlreadyAddedToFoodRation,
 )
 
@@ -29,6 +30,21 @@ def first_food_ration_day(frozen_datetime: datetime) -> FoodRationDay:
         weeks_interval=2,
         week_day=Day.MONDAY,
     )
+
+
+def test__create_food_ration__create_event(frozen_datetime: datetime) -> None:
+    food_ration = FoodRation(
+        id="test_id",
+        created_at=frozen_datetime,
+        updated_at=frozen_datetime,
+        user_id="test_user_id",
+    )
+
+    assert len(food_ration.domain_events) == 1
+    assert isinstance(food_ration.domain_events[0], FoodRationCreatedEvent)
+
+    event: FoodRationCreatedEvent = food_ration.domain_events[0]
+    assert event.food_ration_id == food_ration.id
 
 
 def test__food_ration_add_food_ration_day(

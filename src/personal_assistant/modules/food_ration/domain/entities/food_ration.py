@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 
 from commons.entities import BaseAggregateRoot, EntityId
+from personal_assistant.modules.food_ration.domain.domain_events import FoodRationCreatedEvent
 from personal_assistant.modules.food_ration.domain.errors import (
     FoodRationDayAlreadyAddedToFoodRation,
 )
@@ -14,6 +15,10 @@ class FoodRation(BaseAggregateRoot):
 
     user_id: EntityId
     food_ration_days: list[FoodRationDay] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        created_event = FoodRationCreatedEvent(food_ration_id=self.id)
+        self._add_domain_event(created_event)
 
     def add_food_ration_day(self, food_ration_day: FoodRationDay) -> None:
         if food_ration_day in self.food_ration_days:

@@ -30,7 +30,7 @@ warn_unused_configs = true
 ignore_missing_imports = false
 implicit_reexport = true
 exclude = "(^|/)(.venv|env|build|dist|migrations|alembic)/"
-mypy_path = ["src"]
+mypy_path = ["commons", "src"]
 
 [[tool.mypy.overrides]]
 module = ["tests.*"]
